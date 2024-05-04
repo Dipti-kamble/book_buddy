@@ -41,7 +41,7 @@
 	
 	<nav class="navbar navbar-expand-lg  ftco_navbar ftco-navbar-light" id="ftco-navbar">
 				<div class="container">
-					<a class="navbar-brand" href="index.html">Bookshelf</a>
+					<a class="navbar-brand" href="index.php">Bookshelf</a>
 					<!-- <img src="media/images/book.png" height="100px" width="100px"> -->
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false"
 					 aria-label="Toggle navigation">
@@ -49,23 +49,23 @@
 					</button>
 					<div class="collapse navbar-collapse" id="ftco-nav">
 						<ul class="navbar-nav ml-auto">
-							<li class="nav-item "><a href="index.html" class="nav-link" style="font-size:1rem ; font-weight:500">Home</a></li>
-							<li class="nav-item"><a href="about.html" class="nav-link" style="font-size:1rem ; font-weight:500">About</a></li>
-							<!-- <li class="nav-item"><a href="features.html" class="nav-link" style="font-size:1rem ; font-weight:500">Features</a></li> -->
-							<li class="nav-item"><a href="Collection.html" class="nav-link" style="font-size:1rem ; font-weight:500">Collection</a></li>
-							<li class="nav-item"><a href="Testimonials.html" class="nav-link" style="font-size:1rem ; font-weight:500">Testimonials</a></li>
+							<li class="nav-item "><a href="index.php" class="nav-link" style="font-size:1rem ; font-weight:500">Home</a></li>
+							<li class="nav-item"><a href="about.php" class="nav-link" style="font-size:1rem ; font-weight:500">About</a></li>
+							<!-- <li class="nav-item"><a href="features.php" class="nav-link" style="font-size:1rem ; font-weight:500">Features</a></li> -->
+							<li class="nav-item"><a href="Collection.php" class="nav-link" style="font-size:1rem ; font-weight:500">Collection</a></li>
+							<li class="nav-item"><a href="Testimonials.php" class="nav-link" style="font-size:1rem ; font-weight:500">Testimonials</a></li>
 		
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 								 style="font-size:1rem ; font-weight:500">Shop</a>
 								<div class="dropdown-menu" aria-labelledby="dropdown04" style="font-size:1rem ; font-weight:500">
-									<a class="dropdown-item" href="Readonline.html">Read online</a>
-									<a class="dropdown-item" href="Purchasebook.html">Purchase book</a>
-									<a class="dropdown-item" href="addtoCart.html">add to Cart</a>
-									<a class="dropdown-item" href="checkout.html">Checkout</a>
+									<a class="dropdown-item" href="Readonline.php">Read online</a>
+									<a class="dropdown-item" href="Purchasebook.php">Purchase book</a>
+									<a class="dropdown-item" href="addtoCart.php">add to Cart</a>
+									<a class="dropdown-item" href="checkout.php">Checkout</a>
 								</div>
 							</li>
-							<li class="nav-item"><a href="contact.html" class="nav-link" style="font-size:1rem ; font-weight:500">Contact</a></li>
+							<li class="nav-item"><a href="contact.php" class="nav-link" style="font-size:1rem ; font-weight:500">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 
 					<div class="col-md-7 col-sm-12 text-center ftco-animate">
 						<h1 class="mb-3 mt-5 bread">Cart</h1>
-						<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Cart</span></p>
+						<p class="breadcrumbs"><span class="mr-2"><a href="index.php">Home</a></span> <span>Cart</span></p>
 					</div>
 
 				</div>
@@ -106,10 +106,10 @@
 			</thead>
 	</table>
 
-	<iframe src="cart.html" style="width:100%; height: 530px; border: 0px"></iframe>
+	<iframe src="cart.php" style="width:100%; height: 530px; border: 0px"></iframe>
 	
     </section>  
-    <!-- <a href="checkout.html" class="btn2 btn-primary p-3 px-xl-4 py-xl-3 rounded float-right" >Buy Now</a> -->
+    <!-- <a href="checkout.php" class="btn2 btn-primary p-3 px-xl-4 py-xl-3 rounded float-right" >Buy Now</a> -->
 
 
 	<!-- footer section -->
