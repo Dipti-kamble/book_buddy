@@ -24,8 +24,8 @@
                 <form class="" method="POST" action="../database/adminLogin.php">
                     <div class="d-flex flex-column align-items-center" style="gap:35px">
                         <h3 class="fw-bold">Admin Form</h3>
-                        <input class="form-control" type="text" placeholder="Admin UserId">
-                        <input class="form-control" type="password" id="admin-login-password" placeholder="Admin Password">
+                        <input class="form-control" type="text" name="name" placeholder="Admin UserId">
+                        <input class="form-control" type="password" name="password" id="admin-login-password" placeholder="Admin Password">
                         <div class="">
                             <button type="button" class="btn btn-primary" id="show-hide-admin-password">Show Password</button>
                             <button type="submit" class="btn btn-success">Login</button>
