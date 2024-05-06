@@ -163,9 +163,9 @@
                     <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
                     <?php
                     // Display message above the form if it exists
-                    if (isset($_SESSION['message'])) {
-                        echo '<div class="fs-3 fw-bold alert alert-success">' . $_SESSION['message'] . '</div>';
-                        unset($_SESSION['message']); // Clear the message after displaying it
+                    if (isset($_SESSION['user_message'])) {
+                        echo '<div class="fs-3 fw-bold alert alert-success">' . $_SESSION['user_message'] . '</div>';
+                        unset($_SESSION['user_message']); // Clear the message after displaying it
                     }
                     ?>
                     <form method="POST" action="./database/contact_form.php">

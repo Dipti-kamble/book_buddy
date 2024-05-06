@@ -23,6 +23,33 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // If the user is logged in, continue with the dashboard page
+
+// Start or resume the session
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Redirect to the login page or any other page you want to redirect unauthorized users to
+    header("Location: /book_buddy/admin/dashboard.php");
+    exit;
+}
+
+// Include your database connection file
+include_once "../database/conn.php";
+
+// Check if form is submitted
+$sql = "SELECT * from contact_forms";
+$result = $conn->query($sql);
+
+// Initialize an empty array to store contact form data
+$contactForms = [];
+
+// Fetch contact form data and store it in the array
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $contactForms[] = $row;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -74,12 +101,12 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
 
                 <div class="text-light">
-                    <?php 
-                        if($_SESSION['success']){
-                            echo $_SESSION['success'];
-                        }else{
-                            echo $_SESSION['error'];
-                        }
+                    <?php
+                    if ($_SESSION['success']) {
+                        echo $_SESSION['success'];
+                    } else {
+                        echo $_SESSION['error'];
+                    }
                     ?>
                 </div>
 
@@ -95,7 +122,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <form method="POST" action="../database/updateAdmin.php" enctype="multipart/form-data">
                                     <div class="row p-5">
                                         <div class="col-3 d-flex flex-column gap-3">
-                                            <img class="img-fluid" src="./media/<?php echo $_SESSION['user_profile']?>" style="width: 250px; height:250px;" alt="admin profile pic">
+                                            <img class="img-fluid" src="./media/<?php echo $_SESSION['user_profile'] ?>" style="width: 250px; height:250px;" alt="admin profile pic">
                                             <span class="fw-bold">Change Profile Pic: </span><input name="file" type="file" src="" alt="">
                                         </div>
                                         <div class="col">
@@ -129,19 +156,53 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                     <!-- contact forms -->
                     <div class="tab-pane fade" id="form-entries-panel">
-                        Form Entries
-                    </div>
-                    <div class="tab-pane fade" id="feedback-forms-panel">
-                        Feedback forms
+                        <div class="container-fluid p-5">
+                            <h1>From Entries</h1>
+                            <div class="container shadow-lg">
+                                <!-- fetch table data from database -->
+                                <div class="container mt-5 py-5">
+                                    <h2>Contact Forms</h2>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr class="table-dark">
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Message</th>
+                                                <th>Time Stamp</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($contactForms as $form) : ?>
+                                                <tr>
+                                                    <td><?php echo $form['id']; ?></td>
+                                                    <td><?php echo $form['name']; ?></td>
+                                                    <td><?php echo $form['email']; ?></td>
+                                                    <td><?php echo $form['message']; ?></td>
+                                                    <td><?php echo $form['created_at']; ?></td>
+                                                    <td>
+                                                        <!-- Delete button with onclick event -->
+                                                        <button class="btn btn-danger" onclick="deleteContactForm(<?php echo $form['id']; ?>)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class=" tab-pane fade" id="feedback-forms-panel">
+                                Feedback forms
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Add more content as needed -->
+            <!--Add more content as needed-->
 </body>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="lib/wow/wow.min.js"></script>
 <script src="../lib/easing/easing.min.js"></script>
@@ -152,5 +213,28 @@ if (!isset($_SESSION['user_id'])) {
 <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
 <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 <script src="../js/admin.js"></script>
+
+<script>
+    // Function to handle contact form deletion
+    function deleteContactForm(id) {
+        // Send an AJAX request to delete the contact form with the given ID
+        $.ajax({
+            url: '../database/deleteContact.php', // Replace with your PHP script to handle deletion
+            type: 'POST',
+            data: {
+                id: id
+            },
+            success: function(response) {
+                // Refresh the page or update the table based on your requirement
+                alert("Deleted Successfully !")
+                window.location.reload(); // Refresh the page
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('Error deleting contact form. Please try again.');
+            }
+        });
+    }
+</script>
 
 </html>
